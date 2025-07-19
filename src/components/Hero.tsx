@@ -34,7 +34,7 @@ const Hero = () => {
           Software Developer | Java | Python | Web Technologies
         </p>
         
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">EEE student turning circuits into code. Passionate about software development, with hands-on experience building full-stack applications using Java, WebSockets, and Spring Boot.</p>
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">Transforming circuits to code. Building innovative software solutions with passion for problem-solving and cutting-edge technologies.</p>
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
