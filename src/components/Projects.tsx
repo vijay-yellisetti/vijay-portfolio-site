@@ -43,7 +43,7 @@ const Projects = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="project-card">
+            <div key={index} className="project-card group">
               {project.featured && (
                 <div className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm rounded-full mb-4">
                   Featured
