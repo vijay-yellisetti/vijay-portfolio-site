@@ -2,41 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Vijay Yellisetti Portfolio Design System
+Dark futuristic theme with glassmorphism effects
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark Space Theme */
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glassmorphism Cards */
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --glass: 220 26% 14%;
+    --glass-border: 220 26% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover */
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Electric Blue Primary */
+    --primary: 199 89% 48%;
+    --primary-foreground: 224 71% 4%;
+    --primary-glow: 199 89% 58%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Cyan Secondary */
+    --secondary: 184 81% 29%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Tones */
+    --muted: 220 26% 14%;
+    --muted-foreground: 220 14% 71%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Purple Accent */
+    --accent: 263 70% 50%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Success/Error */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
+    --success: 142 71% 45%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders & Inputs */
+    --border: 220 26% 18%;
+    --input: 220 26% 18%;
+    --ring: 199 89% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(224 71% 4%) 0%, hsl(220 26% 14%) 100%);
+    --gradient-glass: linear-gradient(135deg, 
+      hsla(220, 26%, 14%, 0.7) 0%, 
+      hsla(220, 26%, 18%, 0.3) 100%);
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsla(199, 89%, 48%, 0.3);
+    --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.37);
+    --backdrop-blur: blur(16px);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +132,109 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-hero);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-glass/70 backdrop-blur-xl border border-glass-border/50 rounded-lg;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Glow Button */
+  .btn-glow {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow), 0 10px 20px hsla(199, 89%, 48%, 0.2);
+  }
+
+  /* Secondary Glass Button */
+  .btn-glass {
+    @apply glass-card text-foreground px-6 py-3 rounded-lg font-medium;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-glass:hover {
+    @apply bg-glass/90;
+    transform: translateY(-2px);
+  }
+
+  /* Particle Animation Background */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, hsla(199, 89%, 48%, 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsla(184, 81%, 29%, 0.3), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsla(263, 70%, 50%, 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsla(199, 89%, 58%, 0.3), transparent),
+      radial-gradient(2px 2px at 160px 30px, hsla(184, 81%, 29%, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particles-float 20s linear infinite;
+  }
+
+  @keyframes particles-float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, -25px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* Skill Card Hover Effects */
+  .skill-card {
+    @apply glass-card p-6 text-center;
+    transition: var(--transition-spring);
+  }
+
+  .skill-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-glass), 0 20px 40px hsla(0, 0%, 0%, 0.5);
+  }
+
+  /* Project Card */
+  .project-card {
+    @apply glass-card p-6 group cursor-pointer;
+    transition: var(--transition-spring);
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glass), var(--shadow-glow);
+  }
+
+  /* Text Glow Effect */
+  .text-glow {
+    text-shadow: 0 0 20px hsla(199, 89%, 48%, 0.5);
+  }
+
+  /* Animated Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
