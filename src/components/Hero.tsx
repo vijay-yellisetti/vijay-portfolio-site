@@ -1,25 +1,22 @@
 import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-background.jpg";
-
 const Hero = () => {
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
-    projectsSection?.scrollIntoView({ behavior: 'smooth' });
+    projectsSection?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
   const downloadResume = () => {
     // TODO: Add actual resume PDF link
     console.log("Download resume clicked");
   };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBackground})`
+    }} />
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-background/50" />
@@ -37,26 +34,16 @@ const Hero = () => {
           Software Developer | Java | Python | Web Technologies
         </p>
         
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-          Transforming circuits to code. Building innovative software solutions 
-          with passion for problem-solving and cutting-edge technologies.
-        </p>
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">EEE student turning circuits into code. Passionate about software development, with hands-on experience building full-stack applications using Java, WebSockets, and Spring Boot.</p>
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-          <Button 
-            onClick={scrollToProjects}
-            className="btn-glow text-lg px-8 py-4"
-          >
+          <Button onClick={scrollToProjects} className="btn-glow text-lg px-8 py-4">
             View Projects
             <ArrowDown className="ml-2 h-5 w-5" />
           </Button>
           
-          <Button 
-            onClick={downloadResume}
-            variant="outline"
-            className="btn-glass text-lg px-8 py-4"
-          >
+          <Button onClick={downloadResume} variant="outline" className="btn-glass text-lg px-8 py-4">
             Download Resume
             <Download className="ml-2 h-5 w-5" />
           </Button>
@@ -64,20 +51,10 @@ const Hero = () => {
         
         {/* Social Links */}
         <div className="flex justify-center gap-6">
-          <a 
-            href="https://github.com/vijay-yellisetti" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="glass-card p-3 hover:scale-110 transition-all duration-300"
-          >
+          <a href="https://github.com/vijay-yellisetti" target="_blank" rel="noopener noreferrer" className="glass-card p-3 hover:scale-110 transition-all duration-300">
             <Github className="h-6 w-6" />
           </a>
-          <a 
-            href="https://linkedin.com/in/vijay-yellisetti" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="glass-card p-3 hover:scale-110 transition-all duration-300"
-          >
+          <a href="https://linkedin.com/in/vijay-yellisetti" target="_blank" rel="noopener noreferrer" className="glass-card p-3 hover:scale-110 transition-all duration-300">
             <Linkedin className="h-6 w-6" />
           </a>
         </div>
@@ -87,8 +64,6 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ArrowDown className="h-6 w-6 text-primary" />
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
